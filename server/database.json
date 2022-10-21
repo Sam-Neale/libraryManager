@@ -1,0 +1,570 @@
+{
+    "users": {
+        "fields": {
+            "username": {
+                "type": "varchar(5)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },            "password": {
+                "type": "varchar(7000)",
+                "flags": "",
+                "default": null,
+                "transform": null
+            },
+            "pwd": {
+                "type": "varchar(7000)",
+                "flags": "",
+                "default": null,
+                "transform": null
+            },
+            "profilePicture": {
+                "type": "longtext",
+                "flags": "",
+                "default": null,
+                "transform": null
+            },
+            "banner": {
+                "type": "longtext",
+                "flags": "",
+                "default": null,
+                "transform": null
+            },
+            "rank": {
+                "type": "int",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null,
+                "related": {
+                    "table": "ranks",
+                    "field": "id"
+                },
+                "relation": "single"
+            },
+            "callsign": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL",
+                "default": "0",
+                "transform": null
+            },
+            "ifID": {
+                "type": "varchar(1024)",
+                "flags": "",
+                "default": null,
+                "transform": null
+            },
+            "permissions": {
+                "type": "int",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            },
+            "changePWD": {
+                "type": "tinyint",
+                "flags": "NOT NULL",
+                "default": 1,
+                "transform": null
+            },
+            "revoked": {
+                "type": "tinyint",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            },
+            "manualRank": {
+                "type": "tinyint",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            },
+            "hours": {
+                "type": "int",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            },
+            "meta": {
+                "type": "varchar(7000)",
+                "flags": "NOT NULL",
+                "default": "'{seen: null, created: null}'",
+                "transform": null
+            }
+        },
+        "pk": "pilotID"
+    },
+    "routes": {
+        "fields": {
+            "id": {
+                "type": "bigint",
+                "flags": "unsigned NOT NULL AUTO_INCREMENT",
+                "default": null,
+                "transform": null
+            },
+            "routeNumber": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "departureICAO": {
+                "type": "varchar(4)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "arrivalICAO": {
+                "type": "varchar(4)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "aircrafts": {
+                "type": "varchar(10000)",
+                "flags": "NOT NULL",
+                "default": "'[]'",
+                "transform": null,
+                "related": {
+                    "table": "aircraft",
+                    "field": "liveryID"
+                },
+                "relation": "multiple"
+            },
+            "flightTime": {
+                "type": "bigint",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            },
+            "minHours": {
+                "type": "float",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            },
+            "routeType": {
+                "type": "tinyint",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            }
+        },
+        "pk": "id"
+    },
+    "aircraft": {
+        "fields": {
+            "liveryID": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "aircraftID": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "liveryName": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "aircraftName": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "minHours": {
+                "type": "float",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            }
+        },
+        "pk": "liveryID"
+    },
+    "events": {
+        "fields": {
+            "id": {
+                "type": "bigint",
+                "flags": "unsigned NOT NULL AUTO_INCREMENT",
+                "default": null,
+                "transform": null
+            },
+            "title": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "banner": {
+                "type": "varchar(5000)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "message": {
+                "type": "longtext",
+                "flags": "",
+                "default": null,
+                "transform": null
+            },
+            "depICAO": {
+                "type": "varchar(4)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "arrICAO": {
+                "type": "varchar(4)",
+                "flags": "",
+                "default": null,
+                "transform": null
+            },
+            "server": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "aircrafts": {
+                "type": "varchar(10000)",
+                "flags": "NOT NULL",
+                "default": "'[]'",
+                "transform": null,
+                "related": {
+                    "table": "aircraft",
+                    "field": "liveryID"
+                },
+                "relation": "multiple"
+            },
+            "gates": {
+                "type": "longtext",
+                "flags": "NOT NULL",
+                "default": null,
+                "transform": null
+            },
+            "startDate": {
+                "type": "bigint",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            },
+            "endDate": {
+                "type": "bigint",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            }
+        },
+        "pk": "id"
+    },
+    "multipliers": {
+        "fields": {
+            "id": {
+                "type": "bigint",
+                "flags": "unsigned NOT NULL AUTO_INCREMENT",
+                "default": null,
+                "transform": null
+            },
+            "label": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL UNIQUE",
+                "default": "''",
+                "transform": null
+            },
+            "amount": {
+                "type": "float",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            }
+        },
+        "pk": "id"
+    },
+    "operators": {
+        "fields": {
+            "id": {
+                "type": "bigint",
+                "flags": "unsigned NOT NULL AUTO_INCREMENT",
+                "default": null,
+                "transform": null
+            },
+            "name": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "code": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "ownVA": {
+                "type": "tinyint",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            }
+        },
+        "pk": "id"
+    },
+    "pireps": {
+        "fields": {
+            "id": {
+                "type": "bigint",
+                "flags": "unsigned NOT NULL AUTO_INCREMENT",
+                "default": null,
+                "transform": null
+            },
+            "depAir": {
+                "type": "varchar(4)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "arrAir": {
+                "type": "varchar(4)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "pilot": {
+                "type": "varchar(5)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null,
+                "related": {
+                    "table": "users",
+                    "field": "pilotID"
+                },
+                "relation": "single"
+            },
+            "vehicle": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null,
+                "related": {
+                    "table": "aircraft",
+                    "field": "liveryID"
+                },
+                "relation": "single"
+            },
+            "operator": {
+                "type": "bigint",
+                "flags": "unsigned NOT NULL",
+                "default": 0,
+                "transform": null,
+                "related": {
+                    "table": "operators",
+                    "field": "id"
+                },
+                "relation": "single"
+            },
+            "flightNumber": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "flightTime": {
+                "type": "bigint",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            },
+            "state": {
+                "type": "int",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            },
+            "comments": {
+                "type": "longtext",
+                "flags": "",
+                "default": null,
+                "transform": null
+            },
+            "multi": {
+                "type": "bigint",
+                "flags": "unsigned",
+                "default": null,
+                "transform": null,
+                "related": {
+                    "table": "multipliers",
+                    "field": "id"
+                },
+                "relation": "single"
+            },
+            "fuel": {
+                "type": "int",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            },
+            "reportDate": {
+                "type": "bigint",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            },
+            "flightDate": {
+                "type": "bigint",
+                "flags": "",
+                "default": 0,
+                "transform": null
+            },
+            "image": {
+                "type": "longtext",
+                "flags": "",
+                "default": null,
+                "transform": null
+            },
+            "routeType": {
+                "type": "tinyint",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            },
+            "typeAmount": {
+                "type": "bigint",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            }
+        },
+        "pk": "id"
+    },
+    "ranks": {
+        "fields": {
+            "id": {
+                "type": "bigint",
+                "flags": "unsigned NOT NULL AUTO_INCREMENT",
+                "default": null,
+                "transform": null
+            },
+            "label": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "manual": {
+                "type": "tinyint",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            },
+            "minHours": {
+                "type": "float",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            }
+        },
+        "pk": "id"
+    },
+    "loa": {
+        "fields": {
+            "id": {
+                "type": "bigint",
+                "flags": "unsigned NOT NULL AUTO_INCREMENT",
+                "default": null,
+                "transform": null
+            },
+            "pilot": {
+                "type": "varchar(5)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null,
+                "related": {
+                    "table": "users",
+                    "field": "pilotID"
+                },
+                "relation": "single"
+            },
+            "state": {
+                "type": "int",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            },
+            "startDate": {
+                "type": "bigint",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            },
+            "endDate": {
+                "type": "bigint",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            }
+        },
+        "pk": "id"
+    },
+    "webhooks": {
+        "fields": {
+            "id": {
+                "type": "bigint",
+                "flags": "unsigned NOT NULL AUTO_INCREMENT",
+                "default": null,
+                "transform": null
+            },
+            "label": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "events": {
+                "type": "longtext",
+                "flags": "NOT NULL",
+                "default": null,
+                "transform": null
+            },
+            "url": {
+                "type": "longtext",
+                "flags": "",
+                "default": null,
+                "transform": null
+            },
+            "discord": {
+                "type": "tinyint",
+                "flags": "NOT NULL",
+                "default": 0,
+                "transform": null
+            }
+        },
+        "pk": "id"
+    },
+    "apiKeys": {
+        "fields": {
+            "id": {
+                "type": "bigint",
+                "flags": "unsigned NOT NULL AUTO_INCREMENT",
+                "default": null,
+                "transform": null
+            },
+            "name": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            },
+            "key": {
+                "type": "varchar(1024)",
+                "flags": "NOT NULL",
+                "default": "''",
+                "transform": null
+            }
+        },
+        "pk": "id"
+    }
+}
